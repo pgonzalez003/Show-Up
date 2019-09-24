@@ -4,7 +4,6 @@ $(document).ready(function(){
     $('#indexSubmit').on("click", function(){
         var workoutValue = $('#workoutSelect').find(':selected').val();
         document.location.href = workoutValue;
-        $('.name').text(nameValue);
     })
 
     var exercise = [
@@ -35,7 +34,7 @@ $(document).ready(function(){
     ];
 
    for (var i = 0; i < exercise.length; i++) {
-        console.log(exercise[i].motion.length   );
+        console.log(exercise[i].motion);
         let button = $("<a>");
         button.addClass("btn-floating btn-large waves-effect waves-light red");
         button.attr("id", "areaButton");
@@ -47,16 +46,21 @@ $(document).ready(function(){
     }
 
     $(".btn-floating").on("click", function(){
-        // let motionButton = $("<a>");
-        // motionButton.addClass("btn-floating btn-small waves-effect waves-light red");
-        // motionButton.attr("id", "motionButton");
-        // motionButton.attr("data-motion", exercise.motion[i]);
-        // motionButton.text(exercise[i].motion.length);
-        // $(".textLanding").append(motionButton);
-        let textDisplay = $("<div>");
-        textDisplay.text($(this).attr("data-letter"));
-        $(".textLanding").append(textDisplay);
-    })
+        for (var i = 0; i < exercise.length; i++) {
+        //     // console.log(exercise[i].motion);
+            let motionButton = $("<a>");
+            motionButton.addClass("btn-floating btn-small waves-effect waves-light red");
+            motionButton.attr("id", "motionButton");
+            motionButton.attr("data-motion", exercise[i].motion);
+            motionButton.text($(this).attr("data-motion"));
+            
+            $(".textLanding").append(motionButton);
+            // let textDisplay = $("<a>");
+            // textDisplay.addClass("btn-floating btn-large waves-effect waves-light red");
+            // textDisplay.text($(this).attr("data-letter"));
+            // $(".textLanding").append(textDisplay);
+        }
+        })
 
     // $("#motionButton").on("click", function(){
     //     let textDisplay = $("<div>");
